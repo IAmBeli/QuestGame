@@ -1,2 +1,4 @@
 *.exe
 save.txt
+.vscode/
+tempCodeRunnerFile.py

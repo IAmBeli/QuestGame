@@ -7,9 +7,23 @@ int main(){
     string name;
     int health = 100;
     int damage = 20;
-    cout << "Welcome to the dark forest!" << endl;
+    ifstream loadFile("save.txt");
+    if(loadFile.is_open()){
+        string savedName;
+        int savedHealth;
+        int savedDamage;
+        if(loadFile >> savedName >> savedHealth >> savedDamage){
+            name = savedName;
+            health = savedHealth;
+            damage = savedDamage;
+            cout << "Welcome back!" << endl;
+            cout << "Health " << health << " HP" << endl;
+            cout << "Damage " << damage << " DMG" << endl;
+        }
+        loadFile.close();
+    }else{cout << "Welcome to the dark forest!" << endl;
     cout << "Enter your hero's name: ";
-    cin >> name;
+    cin >> name;}
     cout << "Hero " << name << ", you have " << health << " HP. Your journey begins!" << endl;
     int choice;
     cout << "1. Go into the cave" << endl;
