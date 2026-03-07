@@ -19,6 +19,10 @@ def analyze_survival():
              print("Advice: you take too much damage for too little gold. Buy more potions!")
         elif efficiency:
              print("Advice: great strategy! You are a profitable warrior!")
+        if level > 2:
+             print("Status: experienced adventurer.")
+        else:
+             print("Status: Novice. You are still at the beginning of your journey.")
     except FileNotFoundError:
         print("No save file found for analysis")
     except Exception as e:
