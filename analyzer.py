@@ -6,6 +6,7 @@ def analyze_survival():
             hp = int(lines[1].strip())
             dmg = int(lines[2].strip())
             gold = int(lines[3].strip())
+            level = int(lines[4].stripe())
         print(f"*****Strategy report for {name}*****")
         efficiency = gold / (101 - hp)
         if hp > 70:
