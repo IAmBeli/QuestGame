@@ -28,6 +28,7 @@ int main(){
             cout << "Health: " << health << " HP" << endl;
             cout << "Damage: " << damage << " DMG" << endl;
             cout << "Gold: " << gold << endl;
+            cout << "Level: " << level << endl;
         }
         loadFile.close();
     }else{cout << "Welcome to the dark forest!" << endl;
@@ -68,6 +69,7 @@ int main(){
     
     ofstream saveFile("save.txt");
     if(saveFile.is_open()){
+        level = 1;
         saveFile << name << endl;
         saveFile << health << endl;
         saveFile << damage << endl;

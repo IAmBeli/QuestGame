@@ -1,3 +1,44 @@
+import csv
+import os
+import matplotlib.pyplot as plt
+def plothistory():
+    try:
+        levels = []
+        hp_values = []
+        gold_values = []
+        with open("history.csv", "r") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                levels.append(len(levels) + 1)
+                hp_values.append(int(row["HP"]))
+                gold_values.append(int(row["Gold"]))
+        plt.figure(figsize=(10, 5))
+        plt.plot(levels, hp_values, label="Health (HP)", color="red", marker="o")
+        plt.plot(levels, gold_values, label="Gold", color="gold", marker="s")
+        plt.title("Hero progress over time")
+        plt.xlabel("Game session")
+        plt.ylabel("Value")
+        plt.legend()
+        plt.grid(True)
+        print("Showing progress chart...")
+        plt.show()
+    except Exception as e:
+        print(f"Could not plot data: {e}. try playing more sessions first!")
+def loggamedata():
+    try:
+        with open("save.txt", "r") as f:
+            lines = f.readlines()
+            if len(lines) < 5: return
+            data = [line.strip() for line in lines]
+        file_exists = os.path.isfile("history.csv")
+        with open("history.csv", "a", newline="") as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(["Name", "HP", "Damage", "Gold", "Level"])
+            writer.writerow(data)
+        print("-> Game session logged to history.csv")
+    except Exception as e:
+        print(f"Logging failed due to: {e}")
 def analyze_survival():
     try:
         with open ("save.txt", "r") as f:
@@ -28,3 +69,5 @@ def analyze_survival():
     except Exception as e:
             print(f"An error occured: {e}")
 analyze_survival()
+loggamedata()
+plothistory()
