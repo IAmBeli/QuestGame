@@ -18,7 +18,7 @@ int main(){
         int savedDamage;
         int savedGold;
         int savedLevel;
-        if(loadFile >> savedName >> savedHealth >> savedDamage){
+        if(loadFile >> savedName >> savedHealth >> savedDamage >> savedGold >> savedLevel){
             name = savedName;
             health = savedHealth;
             damage = savedDamage;
@@ -45,8 +45,8 @@ int main(){
         level += 1;
     }else if(choice == 2){
         cout << "A wolf is blocking your way! Fight is starting!" << endl;
-        int damage = rand() % 20 + 10;
-        health -= damage;
+        int takenDamage = rand() % 20 + 10;
+        health -= takenDamage;
         gold += 50;
         cout << "You defeated the wolf, but lost " << damage << " HP during this fight" << endl;
         cout << "You found 50 gold" << endl;
